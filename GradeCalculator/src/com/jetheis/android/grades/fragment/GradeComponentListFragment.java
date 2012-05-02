@@ -131,7 +131,6 @@ public class GradeComponentListFragment extends SherlockListFragment {
                         numberFormat.format(pointComponent.getPointsEarned())));
 
                 earnedSeekBar.setMax((int) pointComponent.getTotalPoints());
-                earnedSeekBar.setProgress((int) pointComponent.getPointsEarned());
                 earnedSeekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
                     @Override
@@ -153,6 +152,9 @@ public class GradeComponentListFragment extends SherlockListFragment {
                         mOnOverallGradeChangedListener.onOverallGradeChanged();
                     }
                 });
+                
+                earnedSeekBar.setProgress((int) pointComponent.getPointsEarned());
+                
             } else {
                 final PercentageGradeComponent percentageComponent = (PercentageGradeComponent) currentComponent;
                 maxTextView.setText(getString(R.string.grade_component_list_fragment_weight,
@@ -163,7 +165,6 @@ public class GradeComponentListFragment extends SherlockListFragment {
                                 percentageFormat.format(percentageComponent.getEarnedPercentage() / 100.0)));
 
                 earnedSeekBar.setMax(100);
-                earnedSeekBar.setProgress((int) percentageComponent.getEarnedPercentage());
                 earnedSeekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
                     @Override
@@ -186,6 +187,8 @@ public class GradeComponentListFragment extends SherlockListFragment {
                         mOnOverallGradeChangedListener.onOverallGradeChanged();
                     }
                 });
+                
+                earnedSeekBar.setProgress((int) percentageComponent.getEarnedPercentage());
             }
 
             result.setOnLongClickListener(new OnLongClickListener() {
